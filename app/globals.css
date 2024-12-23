@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --background: rgb(0, 183, 255);
-    --foreground: #fff;
-}
-
 * {
     padding: 0px;
     margin: 0px;
@@ -14,7 +9,5 @@
 }
 
 body {
-    color: var(--foreground);
-    background: var(--background);
     font-family: Poppins, sans-serif;
 }
