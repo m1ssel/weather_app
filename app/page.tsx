@@ -7,6 +7,7 @@ import { RiWindyFill } from 'react-icons/ri';
 import { FaDroplet } from 'react-icons/fa6';
 import { MdWbSunny } from 'react-icons/md';
 
+// https://api.openweathermap.org/data/2.5/forecast?q=moscow&appid=a2d2dfc953421323710b2fe4d06d7b43&cnt=56
 export default function Home() {
     const options: Intl.DateTimeFormatOptions = {
         timeZone: 'GMT',
