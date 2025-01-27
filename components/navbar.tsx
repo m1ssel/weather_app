@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 type Props = {
     value: string;
-    onChange: React.ChangeEventHandler<HTMLInputElement> | undefined;
-    onSubmit: React.FormEventHandler<HTMLFormElement> | undefined;
+    onChange?: React.ChangeEventHandler<HTMLInputElement> | undefined;
+    onSubmit?: React.FormEventHandler<HTMLFormElement> | undefined;
 };
 
 const Navbar = (props: Props) => {

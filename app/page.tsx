@@ -45,17 +45,17 @@ export default function Home() {
                     </div>
                 </section>
                 <section className='flex justify-between mt-[2rem]'>
-                    <div className='bg-secondary_s w-[68rem] h-[35rem] ml-[10rem] rounded-lg py-4 px-7'>
+                    <div className='bg-secondary_s w-[68rem] h-[30rem] ml-[10rem] rounded-lg py-4 px-7'>
                         asd
                     </div>
                     <div className='bg-secondary_s w-[30rem] mr-[10rem] rounded-lg py-4 px-7'>
                         <div className='mb-[1rem]'>
                             <Slider />
                         </div>
-                        <div className='flex justify-center mb-[2rem]'>
+                        <div className='flex justify-center mb-[1rem]'>
                             {time}
                         </div>
-                        <div className='flex flex-col items-start gap-[2rem]'>
+                        <div className='flex flex-col items-start gap-[1rem]'>
                             <h4 className='uppercase'>Air Conditions</h4>
                             <div className='flex gap-2'>
                                 <FaThermometerEmpty className='w-[2rem] h-[2rem]' />
