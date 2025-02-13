@@ -122,7 +122,7 @@ export default function Home() {
           </div>
         </section>
         <section className="flex justify-between mt-[1rem]">
-          <MainDay />
+          <MainDay firstData={firstData} />
           <OtherDays />
         </section>
       </main>
