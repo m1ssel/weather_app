@@ -1,8 +1,8 @@
 "use client";
 
 import Navbar from "@/components/navbar";
-import MainDay from "@/components/mainDay";
-import OtherDays from "@/components/otherDays";
+import DaysWeek from "@/components/daysWeek";
+import DayToday from "@/components/dayToday";
 import { IoPartlySunny } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
@@ -80,7 +80,7 @@ export default function Home() {
     queryKey: ["repoData"],
     queryFn: async () => {
       const { data } = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=kyiv&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&cnt=56`
+        `https://api.openweathermap.org/data/2.5/forecast?q=lodz&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&cnt=56`
       );
       return data;
     },
@@ -122,8 +122,8 @@ export default function Home() {
           </div>
         </section>
         <section className="flex justify-between mt-[1rem]">
-          <MainDay firstData={firstData} />
-          <OtherDays />
+          <DaysWeek firstData={firstData} />
+          <DayToday data={data} />
         </section>
       </main>
     </div>

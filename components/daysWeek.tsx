@@ -1,6 +1,6 @@
 import { KelvToCels } from "@/utils/kelvToCels";
 
-const MainDay = ({ firstData }) => {
+const DaysWeek = ({ firstData }) => {
   return (
     <div className="bg-secondary_s w-[68rem] h-[30rem] ml-[10rem] rounded-lg py-4 px-7 border border-solid border-gray-100">
       <span>{KelvToCels(firstData?.main.temp ?? 0)}°</span>
@@ -16,4 +16,4 @@ const MainDay = ({ firstData }) => {
   );
 };
 
-export default MainDay;
+export default DaysWeek;

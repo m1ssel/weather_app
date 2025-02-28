@@ -1,4 +1,3 @@
-import Slider from "./slider";
 import { FaThermometerEmpty } from "react-icons/fa";
 import { RiWindyFill } from "react-icons/ri";
 import { FaDroplet } from "react-icons/fa6";
@@ -6,23 +5,11 @@ import { MdWbSunny } from "react-icons/md";
 
 type Props = {};
 
-const OtherDays = (props: Props) => {
-  const options: Intl.DateTimeFormatOptions = {
-    timeZone: "GMT",
-    timeZoneName: "shortGeneric",
-    hour: "2-digit",
-    minute: "2-digit",
-  };
-  const time = new Date().toLocaleTimeString("en-US", options);
+export const AirConditions = (props: Props) => {
   return (
-    <div className="bg-secondary_s w-[30rem] mr-[10rem] rounded-lg py-4 px-7 border border-solid border-gray-100">
-      <div className="mb-[1rem]">
-        <Slider />
-      </div>
-      <div className="flex justify-center mb-[1rem]">{time}</div>
-      <div className="flex flex-col items-start gap-[1rem]">
-        <h4 className="uppercase">Air Conditions</h4>
-        <div className="flex gap-2">
+    <div className="flex flex-col items-start gap-[3rem]">
+      <div className="flex gap-[5rem]">
+        <div className="flex gap-2 w-[160px]">
           <FaThermometerEmpty className="w-[2rem] h-[2rem]" />
           <div className="flex flex-col">
             <p>Real Feel</p>
@@ -36,7 +23,9 @@ const OtherDays = (props: Props) => {
             <p>0.8 km/hr</p>
           </div>
         </div>
-        <div className="flex gap-2">
+      </div>
+      <div className="flex gap-[5rem]">
+        <div className="flex gap-2 w-[160px]">
           <FaDroplet className="w-[2rem] h-[2rem]" />
           <div className="flex flex-col">
             <p>Chance of rain</p>
@@ -54,5 +43,3 @@ const OtherDays = (props: Props) => {
     </div>
   );
 };
-
-export default OtherDays;
