@@ -3,11 +3,13 @@
 import Navbar from "@/components/navbar";
 import DaysWeek from "@/components/daysWeek";
 import DayToday from "@/components/dayToday";
-import { IoPartlySunny } from "react-icons/io5";
 import { FaLocationDot } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
 import { format, parseISO } from "date-fns";
 import axios from "axios";
+import { KelvToCels } from "@/utils/kelvToCels";
+import WeatherIcon from "@/components/weatherIcon";
+import { GetDayOrNight } from "@/utils/getDayOrNight";
 
 type WeatherData = {
   cod: string;
@@ -74,7 +76,6 @@ type Coordinates = {
   lon: number;
 };
 
-// https://api.openweathermap.org/data/2.5/forecast?q=kyiv&appid=189a00009d7cbf351d318b64ca8381c2&cnt=56
 export default function Home() {
   const { isPending, error, data } = useQuery<WeatherData>({
     queryKey: ["repoData"],
@@ -102,14 +103,16 @@ export default function Home() {
       <main>
         <section className="flex justify-between ">
           <div className="ml-[10rem] rounded-lg my-4">
-            <div className="flex items-center justify-center gap-2 mb-[2rem] bg-secondary_s rounded-lg py-4 px-7 border border-solid border-gray-100">
+            <div className="flex items-center justify-center gap-2 mb-[2rem] bg-secondary_s rounded-lg py-4 pl-7 pr-9 border border-solid border-gray-100">
               <FaLocationDot className="scale-125" />
-              <h3 className="text-xl font-[600]">New York</h3>
+              <h3 className="text-xl font-[600]">{data?.city.name}</h3>
             </div>
             <div className="bg-secondary_s rounded-lg py-4 px-7  border border-solid border-gray-100">
-              <h1 className="text-[3rem] text-center font-[500]">26°C</h1>
+              <h1 className="text-[3rem] text-center font-[500] ml-6">
+                {KelvToCels(firstData?.main.temp ?? 0)}°
+              </h1>
               <h2 className="text-xl font-[600] mb-[1rem] text-center">
-                Cloudy
+                {data?.list[0].weather[0].main}
               </h2>
               <div className="flex gap-1">
                 <p>{format(parseISO(firstData?.dt_txt ?? ""), "EEEE")} |</p>
@@ -118,7 +121,14 @@ export default function Home() {
             </div>
           </div>
           <div className="mr-[10rem]">
-            <IoPartlySunny className="w-[15rem] h-auto text-yellow-200" />
+            <WeatherIcon
+              className="h-[17rem] w-[17rem] bg-secondary_s rounded-lg"
+              size={500}
+              iconName={GetDayOrNight(
+                data?.list[0]?.weather[0]?.icon ?? "weather-icon",
+                data?.list[0]?.dt_txt ?? ""
+              )}
+            />
           </div>
         </section>
         <section className="flex justify-between mt-[1rem]">

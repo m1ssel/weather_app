@@ -6,6 +6,9 @@ import { GetDayOrNight } from "@/utils/getDayOrNight";
 type SliderData = {
   list: {
     dt_txt: string;
+    weather: {
+      icon: string;
+    };
     main: {
       temp: number;
     };
@@ -23,8 +26,10 @@ export const Slider = ({ data }: { data: SliderData }) => {
           <p className="whitespace-nowrap">
             {format(parseISO(d.dt_txt), "h:mm a")}
           </p>
-          {/* <WeatherIcon iconName={d.weather[0].icon} /> */}
-          <WeatherIcon iconName={GetDayOrNight(d.weather[0].icon, d.dt_txt)} />
+          <WeatherIcon
+            className="h-14 w-14"
+            iconName={GetDayOrNight(d.weather[0].icon, d.dt_txt)}
+          />
           <p>{KelvToCels(d?.main.temp ?? 0)}°</p>
         </div>
       ))}

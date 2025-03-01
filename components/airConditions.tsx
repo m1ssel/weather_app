@@ -3,9 +3,7 @@ import { RiWindyFill } from "react-icons/ri";
 import { FaDroplet } from "react-icons/fa6";
 import { MdWbSunny } from "react-icons/md";
 
-type Props = {};
-
-export const AirConditions = (props: Props) => {
+export const AirConditions = () => {
   return (
     <div className="flex flex-col items-start gap-[3rem]">
       <div className="flex gap-[5rem]">

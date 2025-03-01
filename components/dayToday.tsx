@@ -1,14 +1,18 @@
 import { AirConditions } from "./airConditions";
 import Slider from "./slider";
 
-const DayToday = ({ data }) => {
-  const options: Intl.DateTimeFormatOptions = {
-    timeZone: "GMT",
-    timeZoneName: "shortGeneric",
-    hour: "2-digit",
-    minute: "2-digit",
+type Props = {
+  data: {
+    list: {
+      dt_txt: string;
+      main: {
+        temp: number;
+      };
+    }[];
   };
-  const time = new Date().toLocaleTimeString("en-US", options);
+};
+
+const DayToday = ({ data }: Props) => {
   return (
     <div className="bg-secondary_s w-[30rem] mr-[10rem] rounded-lg py-4 px-7 border border-solid border-gray-100">
       <h3 className="flex text-xl font-medium justify-center mb-5 uppercase">
