@@ -1,19 +1,13 @@
 import { KelvToCels } from "@/utils/kelvToCels";
+import { MainWeather } from "@/types/main";
 
-type WeatherData = {
-  main: {
-    temp: number;
-    feels_like: number;
-    temp_min: number;
-    temp_max: number;
+type Props = {
+  firstData: {
+    main: MainWeather;
   };
 };
 
-type Props = {
-  firstData: WeatherData;
-};
-
-const DaysWeek = ({ firstData }: Props) => {
+const DaysForecast = ({ firstData }: Props) => {
   return (
     <div className="bg-secondary_s w-[68rem] h-[30rem] ml-[10rem] rounded-lg py-4 px-7 border border-solid border-gray-100">
       <span>{KelvToCels(firstData?.main.temp ?? 0)}°</span>
@@ -29,4 +23,4 @@ const DaysWeek = ({ firstData }: Props) => {
   );
 };
 
-export default DaysWeek;
+export default DaysForecast;

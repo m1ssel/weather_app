@@ -8,7 +8,7 @@ type Props = {
   onSubmit?: React.FormEventHandler<HTMLFormElement> | undefined;
 };
 
-export default function SearchBox(props: Props) {
+const SearchBox = (props: Props) => {
   return (
     <form
       onSubmit={props.onSubmit}
@@ -29,4 +29,6 @@ export default function SearchBox(props: Props) {
       </button>
     </form>
   );
-}
+};
+
+export default SearchBox;

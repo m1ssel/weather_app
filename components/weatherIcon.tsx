@@ -1,10 +1,9 @@
 import { cn } from "@/utils/cn";
 import Image from "next/image";
-import React from "react";
 
-export default function WeatherIcon(
+const WeatherIcon = (
   props: React.HTMLProps<HTMLDivElement> & { iconName: string; size?: number }
-) {
+) => {
   return (
     <div {...props} className={cn(`relative`, props.className)}>
       <Image
@@ -16,4 +15,6 @@ export default function WeatherIcon(
       />
     </div>
   );
-}
+};
+
+export default WeatherIcon;

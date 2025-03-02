@@ -1,21 +1,21 @@
 import { KelvToCels } from "@/utils/kelvToCels";
 import { format, parseISO } from "date-fns";
-import WeatherIcon from "./weatherIcon";
 import { GetDayOrNight } from "@/utils/getDayOrNight";
+import WeatherIcon from "./weatherIcon";
 
 type SliderData = {
   list: {
     dt_txt: string;
     weather: {
       icon: string;
-    };
+    }[];
     main: {
       temp: number;
     };
   }[];
 };
 
-export const Slider = ({ data }: { data: SliderData }) => {
+const Slider = ({ data }: { data: SliderData }) => {
   return (
     <div className="flex gap-3 sm:gap-6 overflow-x-auto w-full justify-between">
       {data?.list.map((d, index) => (

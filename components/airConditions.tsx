@@ -1,42 +1,75 @@
 import { FaThermometerEmpty } from "react-icons/fa";
 import { RiWindyFill } from "react-icons/ri";
-import { FaDroplet } from "react-icons/fa6";
-import { MdWbSunny } from "react-icons/md";
+import { FaRegEye } from "react-icons/fa";
+import { SiRainmeter } from "react-icons/si";
+import { TbSunrise } from "react-icons/tb";
+import { TbSunset } from "react-icons/tb";
 
-export const AirConditions = () => {
+type Props = {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  width?: string;
+};
+
+type WeatherDetails = {
+  realFeel: string;
+  windSpeed: string;
+  visibility: string;
+  humidity: string;
+  sunrise: string;
+  sunset: string;
+};
+
+const ConditionItem = (props: Props) => (
+  <div className="flex gap-2 w-[160px]">
+    {/* <props.icon className="w-[2rem] h-[2rem]" /> */}
+    <div className="w-[2rem] h-[2rem]">{props.icon}</div>
+    <div className="flex flex-col">
+      <p>{props.label}</p>
+      <p>{props.value}</p>
+    </div>
+  </div>
+);
+
+export const AirConditions = (props: WeatherDetails) => {
+  const {
+    realFeel = "5",
+    windSpeed = "7km/h",
+    visibility = "25km",
+    humidity = "61%",
+    sunrise = "6.20",
+    sunset = "18.48",
+  } = props;
   return (
-    <div className="flex flex-col items-start gap-[3rem]">
+    <div className="flex flex-col items-start gap-[1rem]">
       <div className="flex gap-[5rem]">
-        <div className="flex gap-2 w-[160px]">
-          <FaThermometerEmpty className="w-[2rem] h-[2rem]" />
-          <div className="flex flex-col">
-            <p>Real Feel</p>
-            <p>30°</p>
-          </div>
-        </div>
-        <div className="flex gap-2">
-          <RiWindyFill className="w-[2rem] h-[2rem]" />
-          <div className="flex flex-col">
-            <p>Wind</p>
-            <p>0.8 km/hr</p>
-          </div>
-        </div>
+        <ConditionItem
+          icon={<FaThermometerEmpty />}
+          label="Real Feel"
+          value={realFeel}
+        />
+        <ConditionItem
+          icon={<RiWindyFill />}
+          label="Wind speed"
+          value={windSpeed}
+        />
       </div>
       <div className="flex gap-[5rem]">
-        <div className="flex gap-2 w-[160px]">
-          <FaDroplet className="w-[2rem] h-[2rem]" />
-          <div className="flex flex-col">
-            <p>Chance of rain</p>
-            <p>2%</p>
-          </div>
-        </div>
-        <div className="flex gap-2">
-          <MdWbSunny className="w-[2rem] h-[2rem]" />
-          <div className="flex flex-col">
-            <p>UV Index</p>
-            <p>4</p>
-          </div>
-        </div>
+        <ConditionItem
+          icon={<FaRegEye />}
+          label="Visibility"
+          value={visibility}
+        />
+        <ConditionItem
+          icon={<SiRainmeter />}
+          label="Humidity"
+          value={humidity}
+        />
+      </div>
+      <div className="flex gap-[5rem]">
+        <ConditionItem icon={<TbSunrise />} label="Sunrise" value={sunrise} />
+        <ConditionItem icon={<TbSunset />} label="Sunset" value={sunset} />
       </div>
     </div>
   );
