@@ -13,7 +13,7 @@ type Props = {
 const MainInfo = ({ data, firstData }: Props) => {
   return (
     <section className="flex justify-between ">
-      <div className="ml-[10rem] rounded-lg my-4 w-[12rem]">
+      <div className="ml-[10rem] rounded-lg my-4 w-[15rem]">
         <div className="flex items-center justify-center gap-2 mb-[2rem] bg-secondary_s rounded-lg py-4 pl-7 pr-9 border border-solid border-gray-100">
           <FaLocationDot className="scale-125" />
           <h3 className="text-xl font-[600]">{data?.city.name}</h3>

@@ -1,6 +1,6 @@
 import { cn } from "@/utils/cn";
 
-const DayComp = (props: React.HTMLProps<HTMLDivElement>) => {
+const DayContainer = (props: React.HTMLProps<HTMLDivElement>) => {
   return (
     <div
       {...props}
@@ -14,4 +14,4 @@ const DayComp = (props: React.HTMLProps<HTMLDivElement>) => {
   );
 };
 
-export default DayComp;
+export default DayContainer;

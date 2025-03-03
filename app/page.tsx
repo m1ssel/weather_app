@@ -36,7 +36,7 @@ export default function Home() {
         {firstData && <MainInfo data={data} firstData={firstData} />}
         <section className="flex justify-between mt-[1rem]">
           {firstData && <DaysForecast firstData={firstData} />}
-          {data && <DayToday data={data} />}
+          {firstData && <DayToday data={data} firstData={firstData} />}
         </section>
       </main>
     </div>

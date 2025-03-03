@@ -1,5 +1,10 @@
 import { AirConditions } from "./airConditions";
 import { MainWeather, WeatherData, Wind } from "@/types/main";
+import { metersToKm } from "@/utils/metersToKm";
+import { fromUnixTime } from "date-fns";
+import { format } from "date-fns";
+import { KelvToCels } from "@/utils/kelvToCels";
+import { ConvertWindSpeed } from "@/utils/convertWindSpeed";
 import Slider from "./slider";
 
 type Props = {
@@ -7,6 +12,7 @@ type Props = {
   firstData: {
     main: MainWeather;
     wind: Wind;
+    visibility: number;
   };
 };
 
@@ -23,10 +29,12 @@ const DayToday = ({ data, firstData }: Props) => {
         Air Conditions
       </h4>
       <AirConditions
-        realFeel={firstData.main.feels_like}
-        humidity={firstData.main.humidity}
-        windSpeed={firstData.wind.speed}
-        pressure={firstData.main.pressure}
+        realFeel={`${KelvToCels(firstData.main.feels_like)} °C`}
+        windSpeed={`${ConvertWindSpeed(firstData.wind.speed)} km/h`}
+        visibility={`${metersToKm(firstData.visibility)} km`}
+        humidity={`${firstData.main.humidity}%`}
+        sunrise={format(fromUnixTime(data?.city.sunrise), "HH:mm")}
+        sunset={format(fromUnixTime(data?.city.sunset), "HH:mm")}
       />
     </div>
   );
