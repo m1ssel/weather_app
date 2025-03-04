@@ -23,6 +23,22 @@ export default function Home() {
 
   console.log("data", data);
 
+  const uniqueDates = [
+    ...new Set(
+      data?.list.map(
+        (entry) => new Date(entry.dt * 1000).toISOString().split("T")[0]
+      )
+    ),
+  ];
+
+  const firstDataForEachDay = uniqueDates.map((date) => {
+    return data?.list.find((entry) => {
+      const entryDate = new Date(entry.dt * 1000).toISOString().split("T")[0];
+      const entryTime = new Date(entry.dt * 1000).getHours();
+      return entryDate === date && entryTime >= 6;
+    });
+  });
+
   if (isPending)
     return (
       <div className="flex items-center min-h-screen justify-center">
@@ -35,7 +51,13 @@ export default function Home() {
       <main>
         {firstData && <MainInfo data={data} firstData={firstData} />}
         <section className="flex justify-between mt-[1rem]">
-          {firstData && <DaysForecast firstData={firstData} />}
+          {firstDataForEachDay.map(
+            (d, i) =>
+              firstData &&
+              d && (
+                <DaysForecast key={i} data={data} firstData={firstData} d={d} />
+              )
+          )}
           {firstData && <DayToday data={data} firstData={firstData} />}
         </section>
       </main>

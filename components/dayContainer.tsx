@@ -8,9 +8,7 @@ const DayContainer = (props: React.HTMLProps<HTMLDivElement>) => {
         "w-full bg-white border rounded-xl flex py-4 shadow-sm",
         props.className
       )}
-    >
-      Container
-    </div>
+    />
   );
 };
 

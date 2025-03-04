@@ -11,7 +11,7 @@ const Navbar = () => {
           <Image src="/chill.webp" alt="logo" width={150} height={150} />
           {/* <img src='chill.jpg' alt='asd' /> */}
         </Link>
-        <SearchBox />
+        <SearchBox value="asd" />
       </div>
     </nav>
   );

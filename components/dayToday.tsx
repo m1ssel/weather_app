@@ -7,7 +7,7 @@ import { KelvToCels } from "@/utils/kelvToCels";
 import { ConvertWindSpeed } from "@/utils/convertWindSpeed";
 import Slider from "./slider";
 
-type Props = {
+export type DayTodayProps = {
   data: WeatherData;
   firstData: {
     main: MainWeather;
@@ -16,7 +16,7 @@ type Props = {
   };
 };
 
-const DayToday = ({ data, firstData }: Props) => {
+const DayToday = ({ data, firstData }: DayTodayProps) => {
   return (
     <div className="bg-secondary_s w-[30rem] mr-[10rem] rounded-lg py-4 px-7 border border-solid border-gray-100">
       <h3 className="flex text-xl font-medium justify-center mb-5 uppercase">
