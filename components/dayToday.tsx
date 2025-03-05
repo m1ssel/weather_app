@@ -18,7 +18,7 @@ export type DayTodayProps = {
 
 const DayToday = ({ data, firstData }: DayTodayProps) => {
   return (
-    <div className="bg-secondary_s w-[30rem] mr-[10rem] rounded-lg py-4 px-7 border border-solid border-gray-100">
+    <div className="bg-secondary_s w-[30rem] mr-[10rem] rounded-lg py-4 px-7 border border-solid border-gray-100 h-full">
       <h3 className="flex text-xl font-medium justify-center mb-5 uppercase">
         Today
       </h3>

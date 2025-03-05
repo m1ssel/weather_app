@@ -12,7 +12,7 @@ type Props = {
   width?: string;
 };
 
-export type WeatherDetails = {
+export type WeatherDetail = {
   realFeel: string;
   windSpeed: string;
   visibility: string;
@@ -24,56 +24,47 @@ export type WeatherDetails = {
   temp_max?: number;
 };
 
-const ConditionItem = (props: Props) => (
-  <div className="flex gap-2 w-[160px]">
-    {/* <props.icon className="w-[2rem] h-[2rem]" /> */}
-    <div className="w-[2rem] h-[2rem]">{props.icon}</div>
-    <div className="flex flex-col">
-      <p>{props.label}</p>
-      <p>{props.value}</p>
-    </div>
+const WeatherDetailItem = (props: Props) => (
+  <div className="flex flex-col justify-between gap-4 items-center text-xs font-semibold text-gray-600">
+    <p className="whitespace-nowrap">{props.label}</p>
+    <div className="text-3xl">{props.icon}</div>
+    <p>{props.value}</p>
   </div>
 );
 
-export const AirConditions = (props: WeatherDetails) => {
+export const WeatherInfo = (props: WeatherDetail) => {
   return (
-    <div className="flex flex-col items-start gap-[1rem]">
-      <div className="flex gap-[5rem]">
-        <ConditionItem
-          icon={<FaThermometerEmpty className="w-full h-full mt-2" />}
-          label="Real Feel"
-          value={props.realFeel}
-        />
-        <ConditionItem
-          icon={<RiWindyFill className="w-full h-full mt-2" />}
-          label="Wind speed"
-          value={props.windSpeed}
-        />
-      </div>
-      <div className="flex gap-[5rem]">
-        <ConditionItem
-          icon={<FaRegEye className="w-full h-full mt-2" />}
-          label="Visibility"
-          value={props.visibility}
-        />
-        <ConditionItem
-          icon={<SiRainmeter className="w-full h-full mt-2" />}
-          label="Humidity"
-          value={props.humidity}
-        />
-      </div>
-      <div className="flex gap-[5rem]">
-        <ConditionItem
-          icon={<TbSunrise className="w-full h-full mt-2" />}
-          label="Sunrise"
-          value={props.sunrise}
-        />
-        <ConditionItem
-          icon={<TbSunset className="w-full h-full mt-2" />}
-          label="Sunset"
-          value={props.sunset}
-        />
-      </div>
-    </div>
+    <>
+      <WeatherDetailItem
+        icon={<FaThermometerEmpty />}
+        label="Real Feel"
+        value={props.realFeel}
+      />
+      <WeatherDetailItem
+        icon={<RiWindyFill />}
+        label="Wind speed"
+        value={props.windSpeed}
+      />
+      <WeatherDetailItem
+        icon={<FaRegEye />}
+        label="Visibility"
+        value={props.visibility}
+      />
+      <WeatherDetailItem
+        icon={<SiRainmeter />}
+        label="Humidity"
+        value={props.humidity}
+      />
+      <WeatherDetailItem
+        icon={<TbSunrise />}
+        label="Sunrise"
+        value={props.sunrise}
+      />
+      <WeatherDetailItem
+        icon={<TbSunset />}
+        label="Sunset"
+        value={props.sunset}
+      />
+    </>
   );
 };

@@ -19,14 +19,10 @@ export type WeatherDetails = {
   humidity: string;
   sunrise: string;
   sunset: string;
-  weatherIcon?: string;
-  temp_min?: number;
-  temp_max?: number;
 };
 
 const ConditionItem = (props: Props) => (
   <div className="flex gap-2 w-[160px]">
-    {/* <props.icon className="w-[2rem] h-[2rem]" /> */}
     <div className="w-[2rem] h-[2rem]">{props.icon}</div>
     <div className="flex flex-col">
       <p>{props.label}</p>
