@@ -31,7 +31,7 @@ const MainInfo = ({ firstData, location }: Props) => {
             setLoadingCity(false);
             setPlace(response.data.name);
           }, 500);
-        } catch (error) {
+        } catch {
           setLoadingCity(false);
         }
       });
