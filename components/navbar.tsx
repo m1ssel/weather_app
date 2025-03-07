@@ -5,8 +5,10 @@ import SearchBox from "./searchBox";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { useAtom } from "jotai";
+import { loadingCityAtom, placeAtom } from "@/app/atom";
 
-const API_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
+export const API_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
 
 const Navbar = () => {
   const [city, setCity] = useState("");
@@ -14,15 +16,17 @@ const Navbar = () => {
 
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [, setPlace] = useAtom(placeAtom);
+  const [, setLoadingCity] = useAtom(loadingCityAtom);
 
   async function handleInputChange(value: string) {
     setCity(value);
     if (value.length >= 3) {
       try {
         const response = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${value}&appid=${API_KEY}`
+          `https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${API_KEY}`
         );
-        const suggestions = response.data.list.map((item: any) => item.name);
+        const suggestions = response.data.map((item: any) => item.name);
         setSuggestions(suggestions);
         setError("");
         setShowSuggestions(true);
@@ -42,12 +46,18 @@ const Navbar = () => {
   };
 
   const handleSubmitSearch = (e: React.FormEvent<HTMLFormElement>) => {
+    setLoadingCity(true);
     e.preventDefault();
     if (suggestions.length == 0) {
       setError("Location not found");
+      setLoadingCity(false);
     } else {
       setError("");
-      setShowSuggestions(false);
+      setTimeout(() => {
+        setLoadingCity(false);
+        setPlace(city);
+        setShowSuggestions(false);
+      }, 500);
     }
   };
 
@@ -85,12 +95,39 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="shadow-sm sticky top-0 left-0 z-50">
-      <div className="h-20 px-[9.5rem] flex items-center justify-between bg-secondary_s">
-        <Link href="/">
-          <Image src="/chill.webp" alt="logo" width={150} height={150} />
-          {/* <img src='chill.jpg' alt='asd' /> */}
-        </Link>
+    <>
+      <nav className="shadow-sm sticky top-0 left-0 z-50">
+        <div className="h-[4.4rem] px-[10rem] flex items-center justify-between bg-secondary_s">
+          <a
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+            target="_blank"
+          >
+            <Image
+              src="/logo5.webp"
+              alt="logo"
+              className="scale-x-[-1]"
+              width={60}
+              height={56}
+            />
+          </a>
+          <div className="relative hidden md:flex">
+            <SearchBox
+              value={city}
+              onSubmit={handleSubmitSearch}
+              onChange={(e) => handleInputChange(e.target.value)}
+            />
+            <SuggestionBox
+              {...{
+                showSuggestions,
+                suggestions,
+                handleSuggestionClick,
+                error,
+              }}
+            />
+          </div>
+        </div>
+      </nav>
+      <section className="flex max-w-7xl px-3 md:hidden">
         <div className="relative">
           <SearchBox
             value={city}
@@ -98,11 +135,16 @@ const Navbar = () => {
             onChange={(e) => handleInputChange(e.target.value)}
           />
           <SuggestionBox
-            {...{ showSuggestions, suggestions, handleSuggestionClick, error }}
+            {...{
+              showSuggestions,
+              suggestions,
+              handleSuggestionClick,
+              error,
+            }}
           />
         </div>
-      </div>
-    </nav>
+      </section>
+    </>
   );
 };
 

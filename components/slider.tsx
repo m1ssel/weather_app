@@ -28,7 +28,7 @@ const Slider = ({ data }: { data: SliderData }) => {
           </p>
           <WeatherIcon
             className="h-14 w-14"
-            iconName={GetDayOrNight(d.weather[0].icon, d.dt_txt)}
+            iconname={GetDayOrNight(d.weather[0].icon, d.dt_txt)}
           />
           <p>{KelvToCels(d?.main.temp ?? 0)}°</p>
         </div>
