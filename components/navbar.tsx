@@ -3,7 +3,6 @@
 import axios from "axios";
 import SearchBox from "./searchBox";
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 import { useAtom } from "jotai";
 import { loadingCityAtom, placeAtom } from "@/app/atom";
@@ -26,11 +25,13 @@ const Navbar = () => {
         const response = await axios.get(
           `https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${API_KEY}`
         );
-        const suggestions = response.data.map((item: any) => item.name);
+        const suggestions: string[] = response.data.map(
+          (item: { name: string }) => item.name
+        );
         setSuggestions(suggestions);
         setError("");
         setShowSuggestions(true);
-      } catch (error) {
+      } catch {
         setSuggestions([]);
         setShowSuggestions(false);
       }

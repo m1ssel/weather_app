@@ -1,5 +1,5 @@
 import { Poppins } from "next/font/google";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import Head from "next/head";
 import "./globals.css";
 import { Metadata } from "next";
@@ -24,7 +24,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  queryClient;
   return (
     <html lang="en">
       <Head>
