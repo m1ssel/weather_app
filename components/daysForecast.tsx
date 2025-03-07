@@ -20,7 +20,7 @@ const DaysForecast = (props: Props) => {
   return (
     <DayContainer>
       <section className="flex pl-5">
-        <h2 className="flex items-center text-xl font-semibold text-gray-600 w-[7rem]">
+        <h2 className="flex items-center text-xl font-semibold text-gray-600 w-[6rem]">
           {props.date}
         </h2>
         <div className="flex items-center mx-7">

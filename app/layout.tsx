@@ -1,9 +1,9 @@
-"use client";
-
 import { Poppins } from "next/font/google";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Head from "next/head";
 import "./globals.css";
+import { Metadata } from "next";
+import { queryClient } from "@/components/queryClient";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -11,18 +11,24 @@ const poppins = Poppins({
   variable: "--font-poppins",
 });
 
+export const metadata: Metadata = {
+  title: "Weather App",
+  description: "Search for the weather in your city",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const queryClient = new QueryClient();
+  queryClient;
   return (
     <html lang="en">
       <Head>
-        <title>Weather App</title>
-        <meta name="description" content="Look for the weather in your city" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
       </Head>
       <QueryClientProvider client={queryClient}>
         <body className={`${poppins.variable} font-poppins antialiased`}>
