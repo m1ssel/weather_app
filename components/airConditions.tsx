@@ -22,7 +22,7 @@ export type WeatherDetails = {
 };
 
 const ConditionItem = (props: Props) => (
-  <div className="flex gap-2 w-[160px]">
+  <div className="flex gap-2 w-[150px]">
     <div className="w-[2rem] h-[2rem]">{props.icon}</div>
     <div className="flex flex-col">
       <p>{props.label}</p>
@@ -33,43 +33,37 @@ const ConditionItem = (props: Props) => (
 
 export const AirConditions = (props: WeatherDetails) => {
   return (
-    <div className="flex flex-col items-start gap-[1rem]">
-      <div className="flex gap-[5rem]">
-        <ConditionItem
-          icon={<FaThermometerEmpty className="w-full h-full mt-2" />}
-          label="Real Feel"
-          value={props.realFeel}
-        />
-        <ConditionItem
-          icon={<RiWindyFill className="w-full h-full mt-2" />}
-          label="Wind speed"
-          value={props.windSpeed}
-        />
-      </div>
-      <div className="flex gap-[5rem]">
-        <ConditionItem
-          icon={<FaRegEye className="w-full h-full mt-2" />}
-          label="Visibility"
-          value={props.visibility}
-        />
-        <ConditionItem
-          icon={<SiRainmeter className="w-full h-full mt-2" />}
-          label="Humidity"
-          value={props.humidity}
-        />
-      </div>
-      <div className="flex gap-[5rem]">
-        <ConditionItem
-          icon={<TbSunrise className="w-full h-full mt-2" />}
-          label="Sunrise"
-          value={props.sunrise}
-        />
-        <ConditionItem
-          icon={<TbSunset className="w-full h-full mt-2" />}
-          label="Sunset"
-          value={props.sunset}
-        />
-      </div>
+    <div className="flex justify-between">
+      <ConditionItem
+        icon={<FaThermometerEmpty className="w-full h-full mt-2" />}
+        label="Real Feel"
+        value={props.realFeel}
+      />
+      <ConditionItem
+        icon={<RiWindyFill className="w-full h-full mt-2" />}
+        label="Wind speed"
+        value={props.windSpeed}
+      />
+      <ConditionItem
+        icon={<FaRegEye className="w-full h-full mt-2" />}
+        label="Visibility"
+        value={props.visibility}
+      />
+      <ConditionItem
+        icon={<SiRainmeter className="w-full h-full mt-2" />}
+        label="Humidity"
+        value={props.humidity}
+      />
+      <ConditionItem
+        icon={<TbSunrise className="w-full h-full mt-2" />}
+        label="Sunrise"
+        value={props.sunrise}
+      />
+      <ConditionItem
+        icon={<TbSunset className="w-full h-full mt-2" />}
+        label="Sunset"
+        value={props.sunset}
+      />
     </div>
   );
 };
