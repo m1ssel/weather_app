@@ -1,11 +1,11 @@
 "use client";
 
-import axios from "axios";
-import SearchBox from "./searchBox";
-import Image from "next/image";
 import { useState } from "react";
 import { useAtom } from "jotai";
 import { loadingCityAtom, placeAtom } from "@/app/atom";
+import axios from "axios";
+import SearchBox from "./searchBox";
+import Image from "next/image";
 
 export const API_KEY = process.env.NEXT_PUBLIC_WEATHER_KEY;
 
@@ -98,17 +98,17 @@ const Navbar = () => {
   return (
     <>
       <nav className="shadow-sm sticky top-0 left-0 z-50">
-        <div className="h-[4.4rem] px-[10rem] flex items-center justify-between bg-secondary_s">
+        <div className="h-[8vh] px-[10rem] flex items-center justify-between bg-secondary_s">
           <a
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
             target="_blank"
           >
             <Image
-              src="/logo5.webp"
+              src="/logo2.svg"
               alt="logo"
               className="scale-x-[-1]"
-              width={60}
-              height={56}
+              width={50}
+              height={50}
             />
           </a>
           <div className="relative hidden md:flex">

@@ -1,9 +1,9 @@
 import { Poppins } from "next/font/google";
 import { QueryClientProvider } from "@tanstack/react-query";
-import Head from "next/head";
-import "./globals.css";
 import { Metadata } from "next";
 import { queryClient } from "@/components/queryClient";
+import Head from "next/head";
+import "./globals.css";
 
 const poppins = Poppins({
   subsets: ["latin"],

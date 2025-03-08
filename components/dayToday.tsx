@@ -18,14 +18,14 @@ export type DayTodayProps = {
 
 const DayToday = ({ data, firstData }: DayTodayProps) => {
   return (
-    <div className="bg-secondary_s w-[30rem] rounded-lg py-4 px-7 border border-solid border-gray-100 h-full">
-      <h3 className="flex text-xl font-medium justify-center mb-5 uppercase">
+    <div className="bg-secondary_s w-full rounded-lg py-4 px-7 h-full">
+      <h3 className="flex text-xl font-medium justify-center mb-4 uppercase">
         Today
       </h3>
-      <div className="mb-[1rem]">
+      <div className="">
         <Slider data={data} />
       </div>
-      <h4 className="flex uppercase mb-[2rem] justify-center font-medium">
+      <h4 className="flex uppercase mb-4 justify-center font-medium">
         Air Conditions
       </h4>
       <AirConditions
