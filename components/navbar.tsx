@@ -1,5 +1,6 @@
 "use client";
 
+import { FaLocationCrosshairs } from "react-icons/fa6";
 import { useState } from "react";
 import { useAtom } from "jotai";
 import { loadingCityAtom, placeAtom } from "@/app/atom";
@@ -17,6 +18,26 @@ const Navbar = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [, setPlace] = useAtom(placeAtom);
   const [, setLoadingCity] = useAtom(loadingCityAtom);
+
+  const handleCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        try {
+          setLoadingCity(true);
+          const response = await axios.get(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
+          );
+          setTimeout(() => {
+            setLoadingCity(false);
+            setPlace(response.data.name);
+          }, 500);
+        } catch {
+          setLoadingCity(false);
+        }
+      });
+    }
+  };
 
   async function handleInputChange(value: string) {
     setCity(value);
@@ -112,6 +133,10 @@ const Navbar = () => {
             />
           </a>
           <div className="relative hidden md:flex">
+            <FaLocationCrosshairs
+              className="h-10 mr-2 w-6 cursor-pointer"
+              onClick={handleCurrentLocation}
+            />
             <SearchBox
               value={city}
               onSubmit={handleSubmitSearch}

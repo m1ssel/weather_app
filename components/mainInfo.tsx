@@ -3,11 +3,7 @@ import { format, parseISO } from "date-fns";
 import { KelvToCels } from "@/utils/kelvToCels";
 import { GetDayOrNight } from "@/utils/getDayOrNight";
 import { WeatherData, WeatherEntry } from "@/types/main";
-import { loadingCityAtom, placeAtom } from "@/app/atom";
-import { useAtom } from "jotai";
-import { API_KEY } from "./navbar";
 import WeatherIcon from "./weatherIcon";
-import axios from "axios";
 import DayToday from "./dayToday";
 
 type Props = {
@@ -17,38 +13,11 @@ type Props = {
 };
 
 const MainInfo = ({ firstData, location, todayData }: Props) => {
-  const [, setLoadingCity] = useAtom(loadingCityAtom);
-  const [, setPlace] = useAtom(placeAtom);
-
-  const handleCurrentLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        const { latitude, longitude } = position.coords;
-        try {
-          setLoadingCity(true);
-          const response = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`
-          );
-          setTimeout(() => {
-            setLoadingCity(false);
-            setPlace(response.data.name);
-          }, 500);
-        } catch {
-          setLoadingCity(false);
-        }
-      });
-    }
-  };
-
   return (
     <section className="flex gap-10 mt-6 mb-4 mx-[10rem]">
       <div className="rounded-lg min-w-[15rem] flex flex-col justify-between">
         <div className="flex items-center justify-center gap-2 bg-secondary_s rounded-lg py-4 pl-7 pr-9">
-          <FaLocationDot
-            title="Your Current Location"
-            className="scale-125 cursor-pointer"
-            onClick={handleCurrentLocation}
-          />
+          <FaLocationDot title="Your Current Location" className="h-5" />
           <h3 className="text-xl font-[600] text-center">{location}</h3>
         </div>
         <div className="bg-secondary_s rounded-lg py-4 px-7">

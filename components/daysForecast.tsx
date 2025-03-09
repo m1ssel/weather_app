@@ -66,7 +66,7 @@ const DaysForecast = ({ forecastData }: ForecastProps) => {
     });
   });
   return (
-    <section className="h-[30rem] mx-[10rem] mb-6">
+    <section className="mx-[10rem] h-[30rem] mb-6">
       <div className="bg-secondary_s w-full h-full rounded-lg border border-solid border-gray-100 flex flex-col overflow-y-auto gap-4">
         <h2 className="text-2xl font-medium text-center mt-3 pb-3 shadow-sm">
           Forecast
