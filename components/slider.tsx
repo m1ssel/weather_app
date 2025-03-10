@@ -17,11 +17,11 @@ type SliderData = {
 
 const Slider = ({ data }: { data: SliderData }) => {
   return (
-    <div className="flex gap-3 sm:gap-6 overflow-x-auto w-full justify-between">
+    <div className="flex overflow-x-auto w-full justify-between gap-2 sm:gap-0 scrollbar-hide">
       {data?.list.map((d, index) => (
         <div
           key={index}
-          className="flex flex-col items-center gap-1 text-xs font-semibold pb-5"
+          className="flex flex-col items-center lg:gap-1 text-xs font-semibold lg:pb-5"
         >
           <p className="whitespace-nowrap">
             {format(parseISO(d.dt_txt), "h:mm a")}

@@ -22,9 +22,9 @@ export type WeatherDetails = {
 };
 
 const ConditionItem = (props: Props) => (
-  <div className="flex gap-2 w-[150px]">
-    <div className="w-[2rem] h-[2rem]">{props.icon}</div>
-    <div className="flex flex-col">
+  <div className="flex items-center gap-1 xl:gap-2">
+    <div className="h-7 w-7 xl:w-8 xl:h-8">{props.icon}</div>
+    <div className="flex flex-col text-xs font-semibold text-gray-600 text-center items-center justify-center h-full">
       <p>{props.label}</p>
       <p>{props.value}</p>
     </div>
@@ -33,34 +33,34 @@ const ConditionItem = (props: Props) => (
 
 export const AirConditions = (props: WeatherDetails) => {
   return (
-    <div className="flex justify-between">
+    <div className="hidden lg:flex justify-between py-2">
       <ConditionItem
-        icon={<FaThermometerEmpty className="w-full h-full mt-2" />}
+        icon={<FaThermometerEmpty className="w-full h-full" />}
         label="Real Feel"
         value={props.realFeel}
       />
       <ConditionItem
-        icon={<RiWindyFill className="w-full h-full mt-2" />}
+        icon={<RiWindyFill className="w-full h-full" />}
         label="Wind speed"
         value={props.windSpeed}
       />
       <ConditionItem
-        icon={<FaRegEye className="w-full h-full mt-2" />}
+        icon={<FaRegEye className="w-full h-full" />}
         label="Visibility"
         value={props.visibility}
       />
       <ConditionItem
-        icon={<SiRainmeter className="w-full h-full mt-2" />}
+        icon={<SiRainmeter className="w-full h-full" />}
         label="Humidity"
         value={props.humidity}
       />
       <ConditionItem
-        icon={<TbSunrise className="w-full h-full mt-2" />}
+        icon={<TbSunrise className="w-full h-full" />}
         label="Sunrise"
         value={props.sunrise}
       />
       <ConditionItem
-        icon={<TbSunset className="w-full h-full mt-2" />}
+        icon={<TbSunset className="w-full h-full" />}
         label="Sunset"
         value={props.sunset}
       />

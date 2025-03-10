@@ -3,11 +3,17 @@
 @tailwind utilities;
 
 * {
-    padding: 0px;
-    margin: 0px;
-    border: none;
+  padding: 0px;
+  margin: 0px;
+  border: none;
 }
 
 body {
-    font-family: Poppins, sans-serif;
+  font-family: Poppins, sans-serif;
+}
+
+@media (max-width: 640px) {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
 }

@@ -25,19 +25,19 @@ type ForecastProps = {
   forecastData?: WeatherData;
 };
 
-const DayForecast = (props: Props) => {
+const DayF = (props: Props) => {
   return (
     <DayContainer>
-      <section className="flex pl-5">
-        <h2 className="flex items-center text-xl font-semibold text-gray-600 w-[8rem]">
+      <section className="flex pl-4 sm:pl-5">
+        <h2 className="flex items-center text-lg xl:text-xl font-semibold text-gray-600 w-[5rem] xl:w-[8rem]">
           {props.date}
         </h2>
-        <div className="flex items-center mx-7 w-[15rem]">
-          <h2 className="text-[3rem] font-medium text-center w-[6rem]">
+        <div className="flex items-center mx-7 w-[10rem] xl:w-[15rem]">
+          <h2 className="text-4xl xl:text-5xl font-medium text-center w-[6rem]">
             {props.temp}°
           </h2>
           <WeatherIcon
-            className="h-[5rem] w-[5rem]"
+            className="h-16 w-16 xl:h-20 xl:w-20"
             iconname={props.weatherIcon ?? ""}
           />
         </div>
@@ -66,13 +66,13 @@ const DaysForecast = ({ forecastData }: ForecastProps) => {
     });
   });
   return (
-    <section className="mx-[10rem] h-[30rem] mb-6">
-      <div className="bg-secondary_s w-full h-full rounded-lg border border-solid border-gray-100 flex flex-col overflow-y-auto gap-4">
+    <section className="h-[30rem] mb-6">
+      <div className="bg-secondary_s w-full h-full rounded-lg border border-solid border-gray-100 flex flex-col overflow-y-auto gap-4 scrollbar-hide">
         <h2 className="text-2xl font-medium text-center mt-3 pb-3 shadow-sm">
           Forecast
         </h2>
         {firstDataForEachDay.filter(Boolean).map((d, i) => (
-          <DayForecast
+          <DayF
             key={i}
             weatherIcon={d?.weather[0].icon ?? ""}
             date={d?.dt_txt ? format(parseISO(d.dt_txt), "EEEE") : ""}
