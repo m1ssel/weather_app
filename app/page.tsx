@@ -58,7 +58,7 @@ export default function Home() {
   return (
     <div className="flex flex-col bg-primary_s min-h-screen text-gray-600">
       <Navbar />
-      <main className="flex flex-col justify-between h-[92vh]">
+      <main className="flex flex-col justify-between h-[92vh] mx-4 lg:mx-20 2xl:mx-40">
         {loadingCity ? (
           <SkeletonLoader />
         ) : (

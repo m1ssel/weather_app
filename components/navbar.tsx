@@ -97,7 +97,7 @@ const Navbar = () => {
     return (
       <>
         {((showSuggestions && suggestions.length > 1) || error) && (
-          <ul className="mb-4 bg-white absolute border top-[44px] left-0 border-gray-300 rounded-md min-w-[200px] flex flex-col gap-1 py-2 px-2">
+          <ul className="mb-4 bg-white absolute border top-[40px] left-8 border-gray-300 rounded-md min-w-[200px] flex flex-col gap-1 py-2 px-2">
             {error && suggestions.length < 1 && (
               <li className="text-red-500 p-1">{error}</li>
             )}
@@ -119,10 +119,11 @@ const Navbar = () => {
   return (
     <>
       <nav className="shadow-sm sticky top-0 left-0 z-50">
-        <div className="h-[8vh] px-[10rem] flex items-center justify-between bg-secondary_s">
+        <div className="h-[8vh] px-[10rem] flex items-center justify-center md:justify-between bg-secondary_s">
           <a
             href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
             target="_blank"
+            className="hidden md:inline"
           >
             <Image
               src="/logo2.svg"
@@ -132,7 +133,7 @@ const Navbar = () => {
               height={50}
             />
           </a>
-          <div className="relative hidden md:flex">
+          <div className="flex relative">
             <FaLocationCrosshairs
               className="h-10 mr-2 w-6 cursor-pointer"
               onClick={handleCurrentLocation}
@@ -153,7 +154,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <section className="flex max-w-7xl px-3 md:hidden">
+      {/* <section className="flex max-w-7xl px-3 md:hidden">
         <div className="relative">
           <SearchBox
             value={city}
@@ -169,7 +170,7 @@ const Navbar = () => {
             }}
           />
         </div>
-      </section>
+      </section> */}
     </>
   );
 };

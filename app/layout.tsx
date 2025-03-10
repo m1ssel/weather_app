@@ -2,7 +2,6 @@ import { Poppins } from "next/font/google";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Metadata } from "next";
 import { queryClient } from "@/components/queryClient";
-import Head from "next/head";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -26,9 +25,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
-      </Head>
       <QueryClientProvider client={queryClient}>
         <body className={`${poppins.variable} font-poppins antialiased`}>
           {children}

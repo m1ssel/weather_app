@@ -14,28 +14,28 @@ type Props = {
 
 const MainInfo = ({ firstData, location, todayData }: Props) => {
   return (
-    <section className="flex gap-10 mt-6 mb-4 mx-[10rem]">
-      <div className="rounded-lg min-w-[15rem] flex flex-col justify-between">
-        <div className="flex items-center justify-center gap-2 bg-secondary_s rounded-lg py-4 pl-7 pr-9">
-          <FaLocationDot title="Your Current Location" className="h-5" />
+    <section className="flex flex-col items-center lg:flex-row gap-3 lg:gap-10 mt-6 lg:mb-4">
+      <div className="rounded-lg bg-secondary_s sm:bg-none w-full lg:w-[15rem] h-full flex flex-col sm:justify-between sm:gap-3 lg:gap-4">
+        <div className="flex items-center justify-center gap-2 sm:bg-secondary_s rounded-lg pt-3 sm:py-3 lg:py-4 pl-7 pr-9">
+          <FaLocationDot className="h-5" title="Your Current Location" />
           <h3 className="text-xl font-[600] text-center">{location}</h3>
         </div>
-        <div className="bg-secondary_s rounded-lg py-4 px-7">
-          <h1 className="text-[3rem] text-center font-[500] ml-5">
+        <div className="sm:bg-secondary_s rounded-lg pb-3 sm:py-3 lg:py-4 px-7">
+          <h1 className="text-[3rem] text-center font-[500] mt-1 sm:mt-0 ml-5">
             {KelvToCels(firstData?.main.temp ?? 0)}°
           </h1>
-          <h2 className="text-xl font-[600] mb-[1rem] text-center capitalize ">
+          <h2 className="text-lg lg:text-xl font-[600] text-center capitalize ">
             {firstData.weather[0].description}
           </h2>
-          <div className="flex justify-center">
+          <div className="hidden lg:flex justify-center">
             <p>{format(parseISO(firstData?.dt_txt ?? ""), "EEEE")}</p>
           </div>
         </div>
       </div>
       <DayToday data={todayData} firstData={firstData} />
-      <div className="flex">
+      <div className="hidden 2xl:flex">
         <WeatherIcon
-          className="h-[18rem] w-[18rem] bg-secondary_s rounded-lg"
+          className="w-[18rem] h-[18rem] bg-secondary_s rounded-lg"
           size={500}
           iconname={GetDayOrNight(
             firstData?.weather[0]?.icon ?? "weather-icon",
