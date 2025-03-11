@@ -56,9 +56,9 @@ export default function Home() {
   const firstData = todayData?.list[0];
 
   return (
-    <div className="flex flex-col bg-primary_s min-h-screen text-gray-600">
+    <div className="flex flex-col bg-primary_s text-gray-600">
       <Navbar />
-      <main className="flex flex-col justify-between h-[92vh] mx-4 lg:mx-20 2xl:mx-40">
+      <main className="flex flex-col justify-between h-[92vh] mx-4 md:mx-16 xl:mx-24 2xl:mx-40">
         {loadingCity ? (
           <SkeletonLoader />
         ) : (

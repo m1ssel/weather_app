@@ -20,12 +20,10 @@ export type WeatherDetail = {
   sunrise: string;
   sunset: string;
   weatherIcon?: string;
-  temp_min?: number;
-  temp_max?: number;
 };
 
 const WeatherDetailItem = (props: Props) => (
-  <div className="flex flex-col justify-between gap-4 items-center text-xs font-semibold text-gray-600">
+  <div className="flex flex-col justify-between gap-2 lg:gap-4 items-center text-xs font-semibold text-gray-600">
     <p className="whitespace-nowrap">{props.label}</p>
     <div className="text-3xl">{props.icon}</div>
     <p>{props.value}</p>

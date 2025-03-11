@@ -1,11 +1,12 @@
 import { WeatherInfo } from "./weatherInfo";
-import DayContainer from "./dayContainer";
-import WeatherIcon from "./weatherIcon";
 import { format, fromUnixTime, parseISO } from "date-fns";
 import { KelvToCels } from "@/utils/kelvToCels";
 import { metersToKm } from "@/utils/metersToKm";
 import { ConvertWindSpeed } from "@/utils/convertWindSpeed";
 import { WeatherData } from "@/types/main";
+import { WeatherInfoPhone } from "./weatherInfoPhone";
+import DayContainer from "./dayContainer";
+import WeatherIcon from "./weatherIcon";
 
 type Props = {
   date?: string;
@@ -17,8 +18,8 @@ type Props = {
   humidity: string;
   sunrise: string;
   sunset: string;
-  temp_min?: number;
-  temp_max?: number;
+  temp_min: string;
+  temp_max: string;
 };
 
 type ForecastProps = {
@@ -28,22 +29,26 @@ type ForecastProps = {
 const DayF = (props: Props) => {
   return (
     <DayContainer>
-      <section className="flex pl-4 sm:pl-5">
-        <h2 className="flex items-center text-lg xl:text-xl font-semibold text-gray-600 w-[5rem] xl:w-[8rem]">
-          {props.date}
+      <section className="flex pl-4 sm:pl-5 w-[40%] lg:w-fit">
+        <h2 className="flex items-center text-lg sm:text-xl font-semibold text-gray-600 w-4 md:w-10 lg:w-[8rem]">
+          <span className="hidden lg:inline">{props.date}</span>
+          <span className="inline lg:hidden">{props.date?.slice(0, 3)}</span>
         </h2>
-        <div className="flex items-center mx-7 w-[10rem] xl:w-[15rem]">
-          <h2 className="text-4xl xl:text-5xl font-medium text-center w-[6rem]">
+        <div className="flex items-center justify-center lg:justify-between ml-7 lg:mx-7 w-[8rem] md:w-[8rem] xl:w-[10rem]">
+          <h2 className="text-4xl xl:text-5xl font-medium text-center w-[4rem] hidden sm:block">
             {props.temp}°
           </h2>
           <WeatherIcon
-            className="h-16 w-16 xl:h-20 xl:w-20"
+            className="h-12 w-12 md:h-14 md:w-14 xl:h-20 xl:w-20"
             iconname={props.weatherIcon ?? ""}
           />
         </div>
       </section>
-      <section className="overflow-x-auto flex justify-between gap-4 pr-5 w-full">
+      <section className="hidden sm:flex overflow-x-auto justify-between gap-2 sm:gap-0 pr-5 w-full">
         <WeatherInfo {...props} />
+      </section>
+      <section className="flex sm:hidden flex-row overflow-x-auto justify-between gap-2 sm:gap-0 pr-5 w-full">
+        <WeatherInfoPhone {...props} />
       </section>
     </DayContainer>
   );
@@ -66,9 +71,9 @@ const DaysForecast = ({ forecastData }: ForecastProps) => {
     });
   });
   return (
-    <section className="h-[30rem] mb-6">
-      <div className="bg-secondary_s w-full h-full rounded-lg border border-solid border-gray-100 flex flex-col overflow-y-auto gap-4 scrollbar-hide">
-        <h2 className="text-2xl font-medium text-center mt-3 pb-3 shadow-sm">
+    <section className="h-[30rem] mb-3 sm:mb-6 overflow-y-auto">
+      <div className="bg-secondary_s w-full h-full rounded-lg border border-solid border-gray-100 flex flex-col overflow-y-auto gap-1 sm:gap-3 lg:gap-4 scrollbar-hide">
+        <h2 className="text-2xl font-medium text-center mt-3 pb-3 shadow-sm hidden lg:block">
           Forecast
         </h2>
         {firstDataForEachDay.filter(Boolean).map((d, i) => (
@@ -89,6 +94,8 @@ const DaysForecast = ({ forecastData }: ForecastProps) => {
             )}
             visibility={`${metersToKm(d?.visibility ?? 0)} km`}
             windSpeed={`${ConvertWindSpeed(d?.wind.speed ?? 0)} km/h`}
+            temp_max={`${KelvToCels(d?.main.temp_max ?? 0)} °C`}
+            temp_min={`${KelvToCels(d?.main.temp_min ?? 0)} °C`}
           />
         ))}
       </div>
