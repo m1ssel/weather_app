@@ -35,7 +35,7 @@ const MainInfo = ({ firstData, location, todayData }: Props) => {
       <DayToday data={todayData} firstData={firstData} />
       <div className="hidden 2xl:flex">
         <WeatherIcon
-          className="w-[18rem] h-[18rem] bg-secondary_s rounded-lg"
+          className="w-[19rem] h-[19rem] bg-secondary_s rounded-lg"
           size={500}
           iconname={GetDayOrNight(
             firstData?.weather[0]?.icon ?? "weather-icon",

@@ -33,7 +33,7 @@ const ConditionItem = (props: Props) => (
 
 export const AirConditions = (props: WeatherDetails) => {
   return (
-    <div className="hidden lg:flex justify-between py-2">
+    <div className="hidden lg:flex justify-between pt-2">
       <ConditionItem
         icon={<FaThermometerEmpty className="w-full h-full" />}
         label="Real Feel"

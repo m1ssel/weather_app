@@ -22,10 +22,10 @@ const DayToday = ({ data, firstData }: DayTodayProps) => {
       <h3 className="hidden lg:flex text-xl font-medium justify-center mb-4 uppercase">
         Today
       </h3>
-      <div className="">
+      <div>
         <Slider data={data} />
       </div>
-      <h4 className="hidden lg:flex uppercase mb-4 justify-center font-medium">
+      <h4 className="hidden lg:flex uppercase my-4 justify-center font-medium">
         Air Conditions
       </h4>
       <AirConditions

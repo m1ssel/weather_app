@@ -119,12 +119,8 @@ const Navbar = () => {
   return (
     <>
       <nav className="shadow-sm sticky top-0 left-0 z-50">
-        <div className="h-[8vh] px-[10rem] flex items-center justify-center md:justify-between bg-secondary_s">
-          <a
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
-            target="_blank"
-            className="hidden md:inline"
-          >
+        <div className="h-[8vh] flex items-center justify-center md:justify-between bg-secondary_s  md:px-16 xl:px-24 2xl:px-40">
+          <a href="./" className="hidden md:inline">
             <Image
               src="/logo2.svg"
               alt="logo"

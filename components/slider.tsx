@@ -17,7 +17,7 @@ type SliderData = {
 
 const Slider = ({ data }: { data: SliderData }) => {
   return (
-    <div className="flex overflow-x-auto w-full justify-between gap-2 sm:gap-0 scrollbar-hide">
+    <div className="flex overflow-x-auto w-full justify-between gap-3 sm:gap-0 scrollbar-hide">
       {data?.list.map((d, index) => (
         <div
           key={index}
